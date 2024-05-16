@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/emoji.css">
+    <link rel="stylesheet" href="styles/emoji2.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <main>
+        <h2 class="survey-slogan">
+            <span>
+                FUNiX rất mong muốn được biết về trải nghiệm của từng học viên
+            </span>
+            <span>
+                để cải tiến và nâng cao chất lượng từng ngày!
+            </span>
+        </h2>
+
+        <!-- information classroom -->
+        <div class="info-class">
+            <h4 class="survey-title">Thông tin sau buổi học:</h4>
+            <div class="info-class__table">
+                <table>
+                    <tr>
+                        <td class="title">Học viên</td>
+                        <td>Họ tên HV - Mã:</td>
+                    </tr>
+                    <tr>
+                        <td class="title">Môn học</td>
+                        <td>Tên môn học:</td>
+                    </tr>
+                    <tr>
+                        <td class="title">Mentor/Giảng viên</td>
+                        <td>Họ tên Mentor - Mã Mentor:</td>
+                    </tr>
+                    <tr>
+                        <td class="title">Thời gian diễn ra</td>
+                        <td>Thời gian diễn ra:</td>
+                    </tr>
+                    <tr>
+                        <td class="title">TIến độ buổi học</td>
+                        <td>Level: Level đang sẽ (Áp dụng với SCR, CSP) Level (Áp dụng với lớp SCR,CSP)</td>
+                    </tr>
+                    <tr>
+                        <td class="title">Nội dung buổi học</td>
+                        <td>Ghi chú chung (bắt buộc): <span>Ghi chú chung</span></td>
+                    </tr>
+                    <tr>
+                        <td class="title">Nhận xét từ Mentor/Giảng viên</td>
+                        <td>Độ tính trong tác: Tốt/ Tổng đội/Cần cố gắng» (Nếu có) Nắm bắt kiến thức: Tương đối/Cần cố gắng> (Nếu có) Nắm bắt kiến thức: Tốt Tương đối/Cần cố gắng> (Nếu có)</td>
+                    </tr>
+                    <tr>
+                        <td class="title">Nội dung tiếp theo/dặn dò</td>
+                        <td>Năm bắt quyết thúc. Tbv Tuong ddMCần có găng» (Nếu có)</td>
+                    </tr>
+                </table>
+            </div>
+            
+        </div>
+
+        <!-- level interest -->
+        <div class="rating-face">
+            <h4 class="survey-title">
+                Hãy cho FUNiX biết mức độ hài lòng của bạn về buổi học: <span>(*)</span>
+            </h4>
+
+                <!-- /////////Start rating///////////// -->
+                <div class="e-rating">
+                    <div class="e-rating__faces">
+                      <div class="e-rating__face e-rating__face--1">
+                        <div class="e-rating__face-inner">
+                          <div class="e-rating__eye"></div>
+                          <div class="e-rating__eye"></div>
+                          <div class="e-rating__mouth"></div>
+                        </div>
+                        <div class="e-rating__tear"></div>
+                        <div class="e-rating__tear"></div>
+                      </div>
+                      <div class="e-rating__face e-rating__face--2">
+                        <div class="e-rating__face-inner">
+                          <div class="e-rating__eye"></div>
+                          <div class="e-rating__eye"></div>
+                          <div class="e-rating__mouth"></div>
+                        </div>
+                      </div>
+                      <div class="e-rating__face e-rating__face--3">
+                        <div class="e-rating__face-inner">
+                          <div class="e-rating__eye"></div>
+                          <div class="e-rating__eye"></div>
+                          <div class="e-rating__mouth"></div>
+                        </div>
+                      </div>
+                      <div class="e-rating__face e-rating__face--4">
+                        <div class="e-rating__face-inner">
+                          <div class="e-rating__eye"></div>
+                          <div class="e-rating__eye"></div>
+                          <div class="e-rating__mouth"></div>
+                        </div>
+                      </div>
+                      <div class="e-rating__face e-rating__face--5">
+                        <div class="e-rating__face-inner">
+                          <div class="e-rating__eye"></div>
+                          <div class="e-rating__eye"></div>
+                          <div class="e-rating__mouth"></div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                <!-- End Rating -->
+        </div>
+
+        <!-- Info review -->
+        <div class="info-review">
+            <h4 class="survey-title">
+                Vui lòng chia sẻ lý do tại sao:
+            </h4>
+            <div class="info-review__input">
+                <textarea rows="5" name="description"></textarea>
+            </div>
+        </div>
+
+        <div class="btn-confirm">
+            <button>Gửi đánh giá</button>
+        </div>
+
+        <div class="footer-helper">Nếu có bắt cứ vướng mắc gì, vui lòng gửi mail cho itsupport@funix.edu.vn</div>
+
+    </main>
+
+    <script>
+        window.addEventListener("DOMContentLoaded",() => {
+    const emojiRating = new EmojiRating("#emoji")
+});
+
+class EmojiRating {
+    constructor(qs) {
+        this.input = document.querySelector(qs);
+
+        if (this.input) {
+            this.input.addEventListener("input",
+this.refreshValue.bind(this));
+            this.input.value = this.input.min;
+        }
+    }
+    refreshValue(e) {
+        this.input.defaultValue = e.target.value;
+    }
+}
+    </script>
+</body>
+</html>
