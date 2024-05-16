@@ -46,25 +46,18 @@ main {
     border: 1px solid #525252;
     text-align: left;
     padding: 8px 16px;
+    font-size: 16px;
 }
 
 
 /* interest */
-.level-interest span {
-    color: #da5830;
+.e-rating__title {
+    display: block;
+    margin-top: 20px;
+    font-size: 12px;
+    text-align: center;
 }
 
-@keyframes blink {
-    0% { opacity: 1; }
-    50% { opacity: 0; }
-    100% { opacity: 1; }
-  }
-  
-  .emoji-icon {
-    font-size: 48px;
-    /* animation: blink 1s infinite; */
-  }
-  
 
 
 /* review */ 

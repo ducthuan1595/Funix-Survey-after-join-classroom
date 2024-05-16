@@ -10,23 +10,24 @@
     (100vw - 320px) / (1280 - 320));
 }
 
-body {
+/* body {
     height: 100vh;
     display: grid;
     place-items: center;
     transition:
         background-color var(--trans-dur),
         color var(--trans-dur);
-}
+} */
 
-.e-rating,
-.e-rating__faces {
+.e-rating
+{
     display: flex;
 }
 .e-rating {
     --animDur: 2s;
     flex-wrap: wrap;
     padding-top: 2em;
+    padding-bottom: 2em;
     width: 24em;
     margin: 0 auto;
 }
@@ -79,9 +80,11 @@ body {
     background-color: var(--primary2);
 }
 .e-rating__faces {
+    display: flex;
     justify-content: space-between;
     margin-bottom: 1.5em;
     width: 100%;
+    cursor: pointer;
 }
 .e-rating__face,
 .e-rating__face:after {
@@ -89,7 +92,7 @@ body {
     transition:
         background-color var(--trans-dur),
         transform var(--trans-dur) 
-cubic-bezier(0.42,0,0.58,1);
+        cubic-bezier(0.42,0,0.58,1);
 }
 .e-rating__face {
     background-color: hsl(50,90%,55%);
@@ -98,7 +101,7 @@ cubic-bezier(0.42,0,0.58,1);
     height: 3em;
 }
 .e-rating__face:after {
-    background-color: hsla(0,0%,0%,0.2);
+    background-color: hsla(0, 0%, 14%, 0.289);
     content: "";
     display: block;
     position: absolute;
@@ -230,73 +233,74 @@ cubic-bezier(0.42,0,0.58,1);
     transform: translateY(-2em);
 }
 .e-rating__faces .e-rating__face--1:hover 
-.e-rating__faces .e-rating__face--1 .e-rating__eye {
+.e-rating__eye {
     animation: face1-1 var(--animDur) ease-in-out infinite;
 }
 .e-rating__faces .e-rating__face--1:hover
-.e-rating__faces .e-rating__face--1 .e-rating__eye:nth-child(2) {
+.e-rating__eye:nth-child(2) {
     animation: face1-2 var(--animDur) ease-in-out infinite;
 }
 .e-rating__faces .e-rating__face--1:hover
-.e-rating__faces .e-rating__face--1 .e-rating__mouth {
+.e-rating__mouth {
     animation: face1-3 var(--animDur) ease-in-out infinite;
 }
 .e-rating__faces .e-rating__face--1:hover
-.e-rating__faces .e-rating__face--1 .e-rating__face-inner {
+.e-rating__face-inner {
     animation: face1-4 var(--animDur) ease-in-out infinite;
 }
 .e-rating__faces .e-rating__face--1:hover
-.e-rating__faces .e-rating__face--1 .e-rating__tear {
+.e-rating__tear {
     animation: face1-5 var(--animDur) ease-in-out infinite;
 }
-.e-rating__range[value="2"] + 
-.e-rating__faces .e-rating__face--2 .e-rating__eye {
-    animation: face2-1 var(--animDur) ease-in-out infinite;
+.e-rating__faces .e-rating__face--2:hover
+.e-rating__eye {
+    animation: face2-1 var(--animDur) ease-in-out 0.5s infinite;
 }
-.e-rating__range[value="2"] + 
-.e-rating__faces .e-rating__face--2 .e-rating__mouth {
+.e-rating__faces .e-rating__face--2:hover
+.e-rating__mouth {
     animation: face2-2 var(--animDur) ease-in-out infinite;
 }
-.e-rating__range[value="3"] + 
-.e-rating__faces .e-rating__face--3 .e-rating__eye {
+.e-rating__faces .e-rating__face--3:hover 
+.e-rating__eye {
     animation: face3-1 var(--animDur) ease-in-out infinite;
 }
-.e-rating__range[value="3"] + 
-.e-rating__faces .e-rating__face--3 .e-rating__mouth {
+.e-rating__faces .e-rating__face--3:hover 
+.e-rating__mouth {
     animation: face3-2 var(--animDur) ease-in-out infinite;
 }
-.e-rating__range[value="3"] + 
-.e-rating__faces .e-rating__face--3 .e-rating__face-inner {
+.e-rating__faces .e-rating__face--3:hover 
+.e-rating__face-inner {
     animation: face3-3 var(--animDur) ease-in-out infinite;
 }
-.e-rating__range[value="4"] + 
-.e-rating__faces .e-rating__face--4 .e-rating__eye {
+.e-rating__faces .e-rating__face--4:hover 
+.e-rating__eye {
     animation: face4-1 var(--animDur) ease-in-out infinite;
 }
-.e-rating__range[value="4"] + 
-.e-rating__faces .e-rating__face--4 .e-rating__mouth {
+.e-rating__faces .e-rating__face--4:hover 
+.e-rating__mouth {
     animation: face4-2 var(--animDur) ease-in-out infinite;
 }
-.e-rating__range[value="4"] + 
-.e-rating__faces .e-rating__face--4 .e-rating__face-inner {
+.e-rating__faces .e-rating__face--4:hover 
+.e-rating__face-inner {
     animation: face4-3 var(--animDur) ease-in-out infinite;
 }
-.e-rating__range[value="5"] + 
-.e-rating__faces .e-rating__face--5 .e-rating__eye {
+.e-rating__faces .e-rating__face--5:hover
+.e-rating__eye {
     animation: face5-1 var(--animDur) ease-in-out infinite;
 }
-.e-rating__range[value="5"] + 
-.e-rating__faces .e-rating__face--5 .e-rating__eye:nth-child(2) {
+.e-rating__faces .e-rating__face--5:hover
+.e-rating__eye:nth-child(2) {
     animation: face5-2 var(--animDur) ease-in-out infinite;
 }
-.e-rating__range[value="5"] + .e-rating__faces .e-rating__face--5 .e-rating__mouth {
+.e-rating__faces .e-rating__face--5:hover
+.e-rating__mouth {
     animation: face5-3 var(--animDur) ease-in-out infinite;
 }
-.e-rating__range[value="1"] + .e-rating__faces .e-rating__face--1:after,
-.e-rating__range[value="2"] + .e-rating__faces .e-rating__face--2:after,
-.e-rating__range[value="3"] + .e-rating__faces .e-rating__face--3:after,
-.e-rating__range[value="4"] + .e-rating__faces .e-rating__face--4:after,
-.e-rating__range[value="5"] + .e-rating__faces .e-rating__face--5:after {
+.e-rating__faces .e-rating__face--1:hover:after,
+.e-rating__faces .e-rating__face--2:hover:after,
+.e-rating__faces .e-rating__face--3:hover:after,
+.e-rating__faces .e-rating__face--4:hover:after,
+.e-rating__face--5:hover:after {
     transform: translateY(2em) scale(1);
 }
 
@@ -307,7 +311,7 @@ cubic-bezier(0.42,0,0.58,1);
         --fg: hsl(var(--hue),10%,90%);
     }
     .e-rating__face:after {
-        background-color: hsla(0,0%,0%,0.5);
+        background-color: hsla(0,0%,0%,0.2);
     }
 }
 
