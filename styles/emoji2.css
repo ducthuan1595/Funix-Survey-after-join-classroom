@@ -230,7 +230,7 @@
 .e-rating__faces .e-rating__face--3:hover,
 .e-rating__faces .e-rating__face--4:hover,
 .e-rating__faces .e-rating__face--5:hover {
-    transform: translateY(-2em);
+    transform: translateY(-1em);
 }
 .e-rating__faces .e-rating__face--1:hover 
 .e-rating__eye {

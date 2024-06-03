@@ -66,99 +66,118 @@
             
         </div>
 
-        <!-- level interest -->
-        <div class="rating-face">
-            <h4 class="survey-title">
-                Hãy cho FUNiX biết mức độ hài lòng của bạn về buổi học: <span>(*)</span>
-            </h4>
+        <div class="form-survey">
+            <!-- level interest -->
+            <div class="rating-face">
+                <h4 class="survey-title">
+                    Hãy cho FUNiX biết mức độ hài lòng của bạn về buổi học: <span>(*)</span>
+                </h4>
 
-                <!-- /////////Start rating///////////// -->
-                <div class="e-rating">
-                    <div class="e-rating__faces">
-                      <div class="e-rating__face e-rating__face--1">
-                        <div class="e-rating__face-inner">
-                          <div class="e-rating__eye"></div>
-                          <div class="e-rating__eye"></div>
-                          <div class="e-rating__mouth"></div>
+                    <!-- /////////Start rating///////////// -->
+                    <div class="e-rating">
+                        <div class="e-rating__faces">
+                        <div class="e-rating__face e-rating__face--1" onclick="handleChose(event,'worst')">
+                            <div class="e-rating__face-inner">
+                            <div class="e-rating__eye"></div>
+                            <div class="e-rating__eye"></div>
+                            <div class="e-rating__mouth"></div>
+                            </div>
+                            <div class="e-rating__tear"></div>
+                            <div class="e-rating__tear"></div>
+                            <span class="e-rating__title">Rất tệ</span>
                         </div>
-                        <div class="e-rating__tear"></div>
-                        <div class="e-rating__tear"></div>
-                        <span class="e-rating__title">Rất tệ</span>
-                      </div>
-                      <div class="e-rating__face e-rating__face--2">
-                        <div class="e-rating__face-inner">
-                          <div class="e-rating__eye"></div>
-                          <div class="e-rating__eye"></div>
-                          <div class="e-rating__mouth"></div>
+                        <div class="e-rating__face e-rating__face--2" onclick="handleChose(event,'bad')">
+                            <div class="e-rating__face-inner">
+                            <div class="e-rating__eye"></div>
+                            <div class="e-rating__eye"></div>
+                            <div class="e-rating__mouth"></div>
+                            </div>
+                            <span class="e-rating__title">Tệ</span>
                         </div>
-                        <span class="e-rating__title">Tệ</span>
-                      </div>
-                      <div class="e-rating__face e-rating__face--3">
-                        <div class="e-rating__face-inner">
-                          <div class="e-rating__eye"></div>
-                          <div class="e-rating__eye"></div>
-                          <div class="e-rating__mouth"></div>
+                        <div class="e-rating__face e-rating__face--3" onclick="handleChose(event,'normal')">
+                            <div class="e-rating__face-inner">
+                            <div class="e-rating__eye"></div>
+                            <div class="e-rating__eye"></div>
+                            <div class="e-rating__mouth"></div>
+                            </div>
+                            <span class="e-rating__title">Bình thường</span>
                         </div>
-                        <span class="e-rating__title">Bình thường</span>
+                        <div class="e-rating__face e-rating__face--4" onclick="handleChose(event,'good')">
+                            <div class="e-rating__face-inner">
+                            <div class="e-rating__eye"></div>
+                            <div class="e-rating__eye"></div>
+                            <div class="e-rating__mouth"></div>
+                            </div>
+                            <span class="e-rating__title">Tốt</span>
+                        </div>
+                        <div class="e-rating__face e-rating__face--5" onclick="handleChose(event,'best')">
+                            <div class="e-rating__face-inner">
+                            <div class="e-rating__eye"></div>
+                            <div class="e-rating__eye"></div>
+                            <div class="e-rating__mouth"></div>
+                            </div>
+                            <span class="e-rating__title">Tuyệt vời</span>
+                        </div>
+                        </div>
                     </div>
-                      <div class="e-rating__face e-rating__face--4">
-                        <div class="e-rating__face-inner">
-                          <div class="e-rating__eye"></div>
-                          <div class="e-rating__eye"></div>
-                          <div class="e-rating__mouth"></div>
-                        </div>
-                        <span class="e-rating__title">Tốt</span>
-                      </div>
-                      <div class="e-rating__face e-rating__face--5">
-                        <div class="e-rating__face-inner">
-                          <div class="e-rating__eye"></div>
-                          <div class="e-rating__eye"></div>
-                          <div class="e-rating__mouth"></div>
-                        </div>
-                        <span class="e-rating__title">Tuyệt vời</span>
-                      </div>
-                    </div>
-                </div>
-                <!-- End Rating -->
-        </div>
-
-        <!-- Info review -->
-        <div class="info-review">
-            <h4 class="survey-title">
-                Vui lòng chia sẻ lý do tại sao:
-            </h4>
-            <div class="info-review__input">
-                <textarea rows="5" name="description"></textarea>
+                    <!-- End Rating -->
             </div>
-        </div>
 
-        <div class="btn-confirm">
-            <button>Gửi đánh giá</button>
-        </div>
+            <!-- Info review -->
+            <div class="info-review">
+                <h4 class="survey-title">
+                    Vui lòng chia sẻ lý do tại sao:
+                </h4>
+                <div class="info-review__input">
+                    <textarea rows="5" name="description"></textarea>
+                </div>
+            </div>
 
+            <div class="btn-confirm">
+                <button onclick="handleSubmit()">Gửi đánh giá</button>
+            </div>
+
+        </div>
         <div class="footer-helper">Nếu có bắt cứ vướng mắc gì, vui lòng gửi mail cho itsupport@funix.edu.vn</div>
 
     </main>
 
     <script>
-        window.addEventListener("DOMContentLoaded",() => {
-    const emojiRating = new EmojiRating("#emoji")
-});
-
-class EmojiRating {
-    constructor(qs) {
-        this.input = document.querySelector(qs);
-
-        if (this.input) {
-            this.input.addEventListener("input",
-this.refreshValue.bind(this));
-            this.input.value = this.input.min;
+        const descEl = document.querySelector('textarea[name="description"]');
+        const formEl = document.querySelector('.form-survey');
+        const ratingFaceEl = document.querySelectorAll('.e-rating__face');
+        let rating = '';
+        
+        function handleChose (e,value) {
+            let parentsEl = e.target.closest('.e-rating__face');
+            ratingFaceEl.forEach(i => {
+                i.style.transform  = ""
+            })
+            // parentsEl.addEventListener('mouseenter', handleParentHover);
+            // parentsEl.addEventListener('mouseleave', handleParentHover);
+            parentsEl.style.transform = "translateY(-1em)"
+            rating = value;
         }
-    }
-    refreshValue(e) {
-        this.input.defaultValue = e.target.value;
-    }
-}
+
+        function handleParentHover(event) {
+            const parentsEl = event.currentTarget;
+            if (event.type === 'mouseenter') {
+                parentsEl.style.transform = 'translateY(2em) scale(1)';
+            } else {
+                parentsEl.style.transform = '';
+            }
+        }
+
+        function handleSubmit () {
+            const data = {
+                rating: rating,
+                description: descEl.value
+            }
+            console.log({data});
+
+            
+            formEl.classList.add('display-none');
+        }
     </script>
 </body>
 </html>
