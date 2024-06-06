@@ -27,41 +27,8 @@
         <!-- information classroom -->
         <div class="info-class">
             <h4 class="survey-title">Thông tin sau buổi học:</h4>
-            <div class="info-class__table">
-                <table>
-                    <tr>
-                        <td class="title">Học viên</td>
-                        <td>Họ tên HV - Mã:</td>
-                    </tr>
-                    <tr>
-                        <td class="title">Môn học</td>
-                        <td>Tên môn học:</td>
-                    </tr>
-                    <tr>
-                        <td class="title">Mentor/Giảng viên</td>
-                        <td>Họ tên Mentor - Mã Mentor:</td>
-                    </tr>
-                    <tr>
-                        <td class="title">Thời gian diễn ra</td>
-                        <td>Thời gian diễn ra:</td>
-                    </tr>
-                    <tr>
-                        <td class="title">TIến độ buổi học</td>
-                        <td>Level: Level đang sẽ (Áp dụng với SCR, CSP) Level (Áp dụng với lớp SCR,CSP)</td>
-                    </tr>
-                    <tr>
-                        <td class="title">Nội dung buổi học</td>
-                        <td>Ghi chú chung (bắt buộc): <span>Ghi chú chung</span></td>
-                    </tr>
-                    <tr>
-                        <td class="title">Nhận xét từ Mentor/Giảng viên</td>
-                        <td>Độ tính trong tác: Tốt/ Tổng đội/Cần cố gắng» (Nếu có) Nắm bắt kiến thức: Tương đối/Cần cố gắng> (Nếu có) Nắm bắt kiến thức: Tốt Tương đối/Cần cố gắng> (Nếu có)</td>
-                    </tr>
-                    <tr>
-                        <td class="title">Nội dung tiếp theo/dặn dò</td>
-                        <td>Năm bắt quyết thúc. Tbv Tuong ddMCần có găng» (Nếu có)</td>
-                    </tr>
-                </table>
+            <div class="info-class__table" id="data_table">
+                <!-- data subject -->
             </div>
             
         </div>
@@ -134,6 +101,7 @@
             </div>
 
             <div class="btn-confirm">
+                <div class="error-message"></div>
                 <button onclick="handleSubmit()">Gửi đánh giá</button>
             </div>
 
@@ -142,42 +110,7 @@
 
     </main>
 
-    <script>
-        const descEl = document.querySelector('textarea[name="description"]');
-        const formEl = document.querySelector('.form-survey');
-        const ratingFaceEl = document.querySelectorAll('.e-rating__face');
-        let rating = '';
-        
-        function handleChose (e,value) {
-            let parentsEl = e.target.closest('.e-rating__face');
-            ratingFaceEl.forEach(i => {
-                i.style.transform  = ""
-            })
-            // parentsEl.addEventListener('mouseenter', handleParentHover);
-            // parentsEl.addEventListener('mouseleave', handleParentHover);
-            parentsEl.style.transform = "translateY(-1em)"
-            rating = value;
-        }
+    <script src="js/index.js"></script>
 
-        function handleParentHover(event) {
-            const parentsEl = event.currentTarget;
-            if (event.type === 'mouseenter') {
-                parentsEl.style.transform = 'translateY(2em) scale(1)';
-            } else {
-                parentsEl.style.transform = '';
-            }
-        }
-
-        function handleSubmit () {
-            const data = {
-                rating: rating,
-                description: descEl.value
-            }
-            console.log({data});
-
-            
-            formEl.classList.add('display-none');
-        }
-    </script>
 </body>
 </html>

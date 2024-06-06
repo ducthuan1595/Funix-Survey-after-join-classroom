@@ -82,6 +82,13 @@ main {
     padding: 8px 15px;
 }
 
+.error-message {
+    text-align: center;
+    font-size: 12px;
+    color: #da5d33;
+    margin: 40px 0 10px 0;
+}
+
 .btn-confirm {
     text-align: center;
 }
