@@ -12,40 +12,40 @@ const data = {
 window.addEventListener('DOMContentLoaded', () => {
     const tableEl = document.getElementById('data_table');
     tableEl.innerHTML = `
-        <table>
-            <tr>
-                <td class="title">Học viên</td>
-                <td>${data.username}</td>
-            </tr>
-            <tr>
-                <td class="title">Môn học</td>
-                <td>${data.subject_name}</td>
-            </tr>
-            <tr>
-                <td class="title">Mentor/Giảng viên</td>
-                <td>${data.mentor_info}</td>
-            </tr>
-            <tr>
-                <td class="title">Thời gian diễn ra</td>
-                <td>${data.duration}</td>
-            </tr>
-            <tr>
-                <td class="title">Tến độ buổi học</td>
-                <td>${data.subject_progress}</td>
-            </tr>
-            <tr>
-                <td class="title">Nội dung buổi học</td>
-                <td>${data.subject_content}</td>
-            </tr>
-            <tr>
-                <td class="title">Nhận xét từ Mentor/Giảng viên</td>
-                <td>${data.mentor_review}</td>
-            </tr>
-            <tr>
-                <td class="title">Nội dung tiếp theo/dặn dò</td>
-                <td>${data.next_subject_note}</td>
-            </tr>
-        </table>
+        <div class="info-class__table-data">
+            <div>
+                <div class="title">Học viên</div>
+                <div class="value">${data.username}</div>
+            </div>
+            <div>
+                <div class="title">Môn học</div>
+                <div class="value">${data.subject_name}</div>
+            </div>
+            <div>
+                <div class="title">Mentor/Giảng viên</div>
+                <div class="value">${data.mentor_info}</div>
+            </div>
+            <div>
+                <div class="title">Thời gian diễn ra</div>
+                <div class="value">${data.duration}</div>
+            </div>
+            <div>
+                <div class="title">Tến độ buổi học</div>
+                <div class="value">${data.subject_progress}</div>
+            </div>
+            <div>
+                <div class="title">Nội dung buổi học</div>
+                <div class="value">${data.subject_content}</div>
+            </div>
+            <div>
+                <div class="title">Nhận xét từ Mentor/Giảng viên</div>
+                <div class="value">${data.mentor_review}</div>
+            </div>
+            <div>
+                <div class="title">Nội dung tiếp theo/dặn dò</div>
+                <div class="value">${data.next_subject_note}</div>
+            </div>
+        </div>
     `
 })
 

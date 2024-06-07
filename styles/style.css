@@ -7,27 +7,82 @@ body {
 }
 
 main {
-    max-width: 800px;
+    max-width: 1100px;
     margin: 40px auto 10px auto;
 } 
+
+/* start banner */
+.gs-banner {
+    position: relative;
+    display: flex;
+    background-color: #3250BC;
+    height: 400px;
+    overflow: hidden;
+    border-radius: 16px;
+  }
+  .gs-banner-right {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    color: #fff;
+    font-size: 26px;
+    font-weight: 500;
+    font-style: italic;
+    padding-left: 40px;
+    padding-bottom: 80px;
+    z-index: 10;
+  }
+
+  .gs-banner-left {
+    display: flex;
+    width: 50%;
+    /* flex: 1; */
+    align-self: end;
+    z-index: 10;
+  }
+  .gs-banner-left img {
+    width: 100%;
+  }
+  .gs-banner-ellipse1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .gs-banner-ellipse2 {
+    position: absolute;
+    bottom: -100px;
+    right: -26px;
+  }
+  .gs-banner-ellipse3 {
+    position: absolute;
+    bottom: 0;
+    left: 20px;
+  }
+
+/* end banner */
+.survey-content {
+    max-width: 800px;
+    margin: 40px auto 10px auto;
+}
 
 .display-none {
     display: none;
 }
 
-.survey-slogan {
-    display: flex;
-    flex-direction: column;
-    font-size: 22px;
-    font-weight: 600;
-    text-align: center;
-    font-style: italic;
-    color: #07509F;
-}
-
 .survey-title {
     font-size: 16px;
     margin-top: 40px;
+    background-color: #506dd6;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 8px;
+}
+.survey-title--desc {
+    font-size: 16px;
+    margin-top: 40px;
+    color: #506dd6;
 }
 .info-class__table {
     width: 86%;
@@ -37,22 +92,23 @@ main {
     justify-content: center;
 }
 
+.info-class__table-data {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
 .info-class__table .title {
+    color: #3250BC;
+    font-size: 16px;
     font-weight: 500;
 }
 
-.info-class__table table {
-    border-collapse: collapse;
-    width: 100%;
-}
-  
-.info-class__table  td, th {
-    border: 1px solid #525252;
-    text-align: left;
-    padding: 8px 16px;
+.info-class__table .value {
     font-size: 16px;
+    margin-left: 40px;
+    font-style: italic;
 }
-
 
 /* interest */
 .e-rating__title {

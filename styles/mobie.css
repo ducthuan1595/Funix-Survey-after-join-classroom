@@ -1,8 +1,33 @@
 
 @media (max-width: 720px) {
-    main {
+    .survey-content {
         margin: 0 20px 40px 20px;
     }
+    .gs-banner {
+        flex-direction: column;
+        height: auto;
+        justify-content: space-between;
+      }
+      .gs-banner-right {
+        width: auto;
+        order: 1;
+        padding: 20px;
+        gap: 0;
+      }
+      .gs-banner-left {
+        width: 100%;
+        order: 2;
+      }
+      .gs-banner-ellipse1 {
+        top: -125px;
+        left: -250px;
+      }
+      .gs-banner-ellipse2 {
+        display: none;
+      }
+      .gs-banner-ellipse3 {
+        display: none;
+      }
     .survey-slogan {
         display: block;
         font-size: 16px;
