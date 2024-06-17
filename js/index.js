@@ -52,8 +52,10 @@ window.addEventListener('DOMContentLoaded', () => {
 const descEl = document.querySelector('textarea[name="description"]');
 const formEl = document.querySelector('.form-survey');
 const ratingFaceEl = document.querySelectorAll('.e-rating__face');
+const contentNoteEl = document.getElementById('content-noted');
 const errorMessageEl = document.querySelector('.error-message');
 let rating = '';
+let ratingEl = null;
 
 function handleChose (e,value) {
     let parentsEl = e.target.closest('.e-rating__face');
@@ -62,6 +64,7 @@ function handleChose (e,value) {
     })
     // parentsEl.addEventListener('mouseenter', handleParentHover);
     // parentsEl.addEventListener('mouseleave', handleParentHover);
+    ratingEl = parentsEl;
     parentsEl.style.transform = "translateY(-1em)"
     rating = value;
 }
@@ -87,20 +90,43 @@ async function handleSubmit () {
     });
     console.log({data});
 
-    fetch('http://example.com', {
+    fetch(true, {
         method: 'POST',
         headers: { 
             'Content-Type': 'application/json'
         },
         body: data
-    }).then(() => {
-        clearForm();
+        }
+    ).then(() => {
+        if(descEl.value.trim().length > 0) {
+            contentNoteEl.innerHTML = descEl.value;
+            contentNoteEl.parentElement.classList.remove('display-none');
+        }
+        if(ratingEl) {
+            ratingFaceEl.forEach(i => {
+                if(i === ratingEl) {
+                    console.log({i});
+                } else {
+                    i.style.transform  = "";
+                    i.style.backgroundColor = '#cac9c3';
+                    i.style.pointerEvents = 'none';
+                    i.style.cursor = 'none';
+                }
+            })
+        }
         formEl.classList.add('display-none');
+        clearForm();
     }).catch((err) => {
         errorMessageEl.innerText = err.message;
     })
 
 }
+
+window.document.addEventListener('keydown', (event) => {
+    if(event.key == 'Enter') {
+        handleSubmit()
+    }
+})
 
 function clearForm () {
     rating = '';

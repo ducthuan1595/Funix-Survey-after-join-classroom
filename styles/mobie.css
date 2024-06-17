@@ -1,5 +1,14 @@
 
 @media (max-width: 720px) {
+  /* Header */
+  header {
+    margin: 0 20px;
+    padding: 6px 0;
+  }
+
+  .header-info a {
+    display: none;
+  }
     .survey-content {
         margin: 0 20px 40px 20px;
     }
@@ -7,6 +16,7 @@
         flex-direction: column;
         height: auto;
         justify-content: space-between;
+        border-radius: unset;
       }
       .gs-banner-right {
         width: auto;
@@ -63,6 +73,10 @@
         letter-spacing: 0px;
     }
 
+    .survey-noted {
+      margin-bottom: 20px;
+  }
+
     .error-message {
         margin: 20px 0 6px 0;
     }
@@ -70,5 +84,42 @@
     .btn-confirm button {
         padding: 10px 35px;
         margin: 0 0 20px 0;
+    }
+
+    /* Footer */
+    .footer-content {
+      margin-top: 0px;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      padding: 0 20px;
+    }
+
+    ul {
+      font-size: 14px;
+      gap: 10px;
+    }
+
+    .footer--title, .footer-contact__logo {
+      margin-bottom: 0;
+    }
+
+    .footer-below {
+      flex-direction: column;
+      margin-bottom: 50px;
+      align-items: start;
+      padding: 0 20px;
+    }
+
+    .footer-socials {
+      order: 1;
+      margin-bottom: 16px;
+    }
+
+    .footer-below span {
+      order: 2;
+    }
+
+    .footer-contact__logo {
+      margin-bottom: 10px;
     }
 }
