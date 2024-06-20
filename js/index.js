@@ -9,6 +9,15 @@ const data = {
     next_subject_note: 'Năm bắt quyết thúc. Tbv Tuong ddMCần có găng» (Nếu có)'
 }
 
+const LINK_URL = 'https://portal-staging.funix.edu.vn';
+const urlParams = new URLSearchParams(window.location.search);
+const sessionInput = urlParams.get('session_input');
+
+if (sessionInput) {
+    // getInfoAfterClass(atob(sessionInput));
+    getInfoAfterClass(sessionInput);
+}
+
 window.addEventListener('DOMContentLoaded', () => {
     const tableEl = document.getElementById('data_table');
     tableEl.innerHTML = `
@@ -57,6 +66,17 @@ const errorMessageEl = document.querySelector('.error-message');
 let rating = '';
 let ratingEl = null;
 
+// get information after class
+async function getInfoAfterClass (sessionInput) {
+    try{
+        const res = await fetch(`${LINK_URL}/api/v1/private_teacher/session_evaluation?session_input=${+sessionInput}`);
+        const data = await res.json();
+        console.log({data});
+    }catch(err) {
+        console.error(err);
+    }
+} 
+
 function handleChose (e,value) {
     let parentsEl = e.target.closest('.e-rating__face');
     ratingFaceEl.forEach(i => {
@@ -85,40 +105,49 @@ async function handleSubmit () {
     }
   
     let data = JSON.stringify({
-        "rating": rating,
-        "description": descEl.value
+        "parent_evaluation": rating,
+        "parent_explanation": descEl.value,
+        "session_input": +sessionInput
     });
     console.log({data});
 
-    fetch(true, {
-        method: 'POST',
-        headers: { 
-            'Content-Type': 'application/json'
-        },
-        body: data
-        }
-    ).then(() => {
-        if(descEl.value.trim().length > 0) {
-            contentNoteEl.innerHTML = descEl.value;
-            contentNoteEl.parentElement.classList.remove('display-none');
-        }
-        if(ratingEl) {
-            ratingFaceEl.forEach(i => {
-                if(i === ratingEl) {
-                    console.log({i});
-                } else {
-                    i.style.transform  = "";
-                    i.style.backgroundColor = '#cac9c3';
-                    i.style.pointerEvents = 'none';
-                    i.style.cursor = 'none';
-                }
-            })
-        }
-        formEl.classList.add('display-none');
-        clearForm();
-    }).catch((err) => {
-        errorMessageEl.innerText = err.message;
-    })
+    try {
+        fetch(`${LINK_URL}/api/v1/private_teacher/parent_evaluation`, {
+            method: 'POST',
+            headers: { 
+                'Content-Type': 'application/json'
+            },
+            body: data
+            }
+        ).then((result) => {
+            console.log(result);
+            if(result.code !== 201) {
+                errorMessageEl.innerText = result.message
+            }
+            if(descEl.value.trim().length > 0) {
+                contentNoteEl.innerHTML = descEl.value;
+                contentNoteEl.parentElement.classList.remove('display-none');
+            }
+            if(ratingEl) {
+                ratingFaceEl.forEach(i => {
+                    if(i === ratingEl) {
+                        console.log({i});
+                    } else {
+                        i.style.transform  = "";
+                        i.style.backgroundColor = '#cac9c3';
+                        i.style.pointerEvents = 'none';
+                        i.style.cursor = 'none';
+                    }
+                })
+            }
+            formEl.classList.add('display-none');
+            clearForm();
+        }).catch((err) => {
+            errorMessageEl.innerText = err.message;
+        })
+    }catch(err) {
+        console.log(err);
+    }
 
 }
 
