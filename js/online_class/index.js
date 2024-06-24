@@ -78,6 +78,7 @@ async function getInfoAfterClass (sessionInput) {
 } 
 
 function handleChose (e,value) {
+    errorMessageEl.innerText = '';
     let parentsEl = e.target.closest('.e-rating__face');
     ratingFaceEl.forEach(i => {
         i.style.transform  = ""
@@ -119,10 +120,13 @@ async function handleSubmit () {
             },
             body: data
             }
-        ).then((result) => {
-            console.log(result);
-            if(result.code !== 201) {
-                errorMessageEl.innerText = result.message
+        )
+        .then(response => response.json())
+        .then((data) => {
+            console.log({data});
+            if(data.code !== 201) {
+                errorMessageEl.innerText = data.message
+                return;
             }
             if(descEl.value.trim().length > 0) {
                 contentNoteEl.innerHTML = descEl.value;

@@ -122,4 +122,19 @@
     .footer-contact__logo {
       margin-bottom: 10px;
     }
+
+    /* Form */
+
+  .form-group label {
+    color: #3250BC;
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+  .form-group input {
+    min-width: 300px;
+    width: auto;
+    padding: 8px 12px;
+    font-size: 14px;
+  }
 }
