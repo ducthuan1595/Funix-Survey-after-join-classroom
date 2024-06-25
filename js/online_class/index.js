@@ -1,62 +1,61 @@
-const data = {
-    username: 'Ten Hoc Vien',
-    subject_name: 'Ten mon hoc',
-    mentor_info: 'Ten mentor - Ma mentor',
-    duration: 'Thoi gian dien ra',
-    subject_progress: 'Level đang sẽ (Áp dụng với SCR, CSP) Level (Áp dụng với lớp SCR,CSP)',
-    subject_content: 'Ghi chú chung (bắt buộc): <span>Ghi chú chung</span>',
-    mentor_review: 'Độ tính trong tác: Tốt/ Tổng đội/Cần cố gắng» (Nếu có) Nắm bắt kiến thức: Tương đối/Cần cố gắng> (Nếu có) Nắm bắt kiến thức: Tốt Tương đối/Cần cố gắng> (Nếu có)',
-    next_subject_note: 'Năm bắt quyết thúc. Tbv Tuong ddMCần có găng» (Nếu có)'
-}
 
 const LINK_URL = 'https://portal-staging.funix.edu.vn';
 const urlParams = new URLSearchParams(window.location.search);
 const sessionInput = urlParams.get('session_input');
 
 if (sessionInput) {
-    // getInfoAfterClass(atob(sessionInput));
-    getInfoAfterClass(sessionInput);
+    const sessionId = atob(sessionInput)
+    async function getInfoAfterClass () {
+        try{
+            const res = await fetch(`${LINK_URL}/api/v1/private_teacher/session_evaluation?session_input=${+sessionId}`);
+            const data = await res.json();
+            renderContent(data.data)
+        }catch(err) {
+            console.error(err);
+        }
+    };
+    getInfoAfterClass();
 }
 
-window.addEventListener('DOMContentLoaded', () => {
+function renderContent (data) {
     const tableEl = document.getElementById('data_table');
     tableEl.innerHTML = `
         <div class="info-class__table-data">
             <div>
                 <div class="title">Học viên</div>
-                <div class="value">${data.username}</div>
+                <div class="value">${data.student_id}</div>
             </div>
             <div>
                 <div class="title">Môn học</div>
-                <div class="value">${data.subject_name}</div>
+                <div class="value">${data.course_id}</div>
             </div>
             <div>
                 <div class="title">Mentor/Giảng viên</div>
-                <div class="value">${data.mentor_info}</div>
+                <div class="value">${data.mentor_id}</div>
             </div>
             <div>
                 <div class="title">Thời gian diễn ra</div>
-                <div class="value">${data.duration}</div>
+                <div class="value">${data.start_time}</div>
             </div>
             <div>
                 <div class="title">Tến độ buổi học</div>
-                <div class="value">${data.subject_progress}</div>
+                <div class="value">${data.progress}</div>
             </div>
             <div>
                 <div class="title">Nội dung buổi học</div>
-                <div class="value">${data.subject_content}</div>
+                <div class="value">${data.course_content}</div>
             </div>
             <div>
                 <div class="title">Nhận xét từ Mentor/Giảng viên</div>
-                <div class="value">${data.mentor_review}</div>
+                <div class="value">${data.mentor_evaluation}</div>
             </div>
             <div>
                 <div class="title">Nội dung tiếp theo/dặn dò</div>
-                <div class="value">${data.next_subject_note}</div>
+                <div class="value">${data.next_note}</div>
             </div>
         </div>
-    `
-})
+    `;
+}
 
 const descEl = document.querySelector('textarea[name="description"]');
 const formEl = document.querySelector('.form-survey');
@@ -66,16 +65,6 @@ const errorMessageEl = document.querySelector('.error-message');
 let rating = '';
 let ratingEl = null;
 
-// get information after class
-async function getInfoAfterClass (sessionInput) {
-    try{
-        const res = await fetch(`${LINK_URL}/api/v1/private_teacher/session_evaluation?session_input=${+sessionInput}`);
-        const data = await res.json();
-        console.log({data});
-    }catch(err) {
-        console.error(err);
-    }
-} 
 
 function handleChose (e,value) {
     errorMessageEl.innerText = '';
@@ -108,9 +97,8 @@ async function handleSubmit () {
     let data = JSON.stringify({
         "parent_evaluation": rating,
         "parent_explanation": descEl.value,
-        "session_input": +sessionInput
+        "session_input": +atob(sessionInput)
     });
-    console.log({data});
 
     try {
         fetch(`${LINK_URL}/api/v1/private_teacher/parent_evaluation`, {
@@ -123,7 +111,6 @@ async function handleSubmit () {
         )
         .then(response => response.json())
         .then((data) => {
-            console.log({data});
             if(data.code !== 201) {
                 errorMessageEl.innerText = data.message
                 return;

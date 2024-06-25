@@ -1,6 +1,6 @@
 const LINK_URL = 'https://portal-staging.funix.edu.vn';
 const urlParams = new URLSearchParams(window.location.search);
-const sessionInput = urlParams.get('oa_uid');
+const sessionInput = atob(urlParams.get('oa_uid'));
 
 if (sessionInput) {
     // getInfoAfterClass(atob(sessionInput));
@@ -36,18 +36,17 @@ function renderContent () {
             return;
         }
 
-        const data = {
+        const data = JSON.stringify({
             name: usernameEl.value,
             phone_number: phoneEl.value,
             oa_uid: sessionInput
-        }
+        })
 
-        console.log({data});
         try{
             const res = await fetch(`${LINK_URL}/api/v1/zalo/link_account`, {
                 method: 'POST',
                 headers: { 
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
                 },
                 body: data
             });
@@ -78,6 +77,6 @@ function renderContent () {
     function clearForm () {
         errorMessageEl.innerHTML = '';
         phoneEl.value = '',
-        usernameEl = '';
+        usernameEl.value = '';
     }
 }
