@@ -7,6 +7,7 @@ body {
 }
 
 main {
+    position: relative;
     max-width: 1100px;
     margin: 0 auto;
 } 
@@ -102,7 +103,7 @@ main {
     text-align: center;
     font-size: 12px;
     color: #da5d33;
-    margin: 40px 0 10px 0;
+    margin: 30px 0 10px 0;
 }
 
 .btn-confirm {
@@ -166,5 +167,41 @@ main {
     border: 1px solid #000; 
     outline: none;
     font-size: 16px;
+}
+
+/* Popup */
+#popup-msg {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color:rgba(0, 0, 0, 0.5);
+    z-index: 20;
+
+}
+
+.btn-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    color: #000;
+    font-size: 20px;
+}
+
+.btn-close:hover {
+    opacity: 0.6;
+}
+
+.popup-content {
+    position: relative;
+    text-align: center;
+    padding: 60px 20px;
+    margin: 120px auto;
+    background-color: #fff;
+    color: #000;
+    border-radius: 12px;
+    width: 50%;
 }
 

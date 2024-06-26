@@ -14,6 +14,9 @@ function renderContent () {
     const usernameEl = document.querySelector('input[name=username]');
     const phoneEl = document.querySelector('input[name=phone-number]');
     const errorMessageEl = document.querySelector('.error-message');
+    const popupEl = document.getElementById('popup-msg');
+    const popupCtEl = document.getElementById('popup-content');
+    const btnClose = document.querySelector('.btn-close');
     
     // Submit form
     submitBtn.addEventListener('click', async (e) => {
@@ -51,17 +54,36 @@ function renderContent () {
                 body: data
             });
             const result = await res.json();
+            console.log({result});
+            console.log({popupCtEl});
             if(result.code !== 201) {
-                errorMessageEl.innerHTML = result.message;
+                showPopup(result.message);
                 return;
             }
             clearForm();
-            console.log('OK');
+            showPopup(result.message);
         }catch(err) {
             console.error(err);
         }
     })
 
+    btnClose.addEventListener('click', closePopup);
+    popupEl.addEventListener('click', closePopup);
+
+    function closePopup () {
+        const isClass = popupEl.classList.contains('display-none');
+        if(!isClass) {
+            popupEl.classList.add('display-none');
+        }
+    }
+
+    function showPopup (msg) {
+        const isClass = popupEl.classList.contains('display-none');
+        if(isClass) {
+            popupEl.classList.remove('display-none');
+            popupCtEl.innerHTML = msg;
+        }
+    }
 
     /////////////////////
     function checkInputName(input) {
@@ -79,4 +101,5 @@ function renderContent () {
         phoneEl.value = '',
         usernameEl.value = '';
     }
+
 }
